@@ -45,9 +45,9 @@ const TjimoPage: NextPage<any> = ({ user }) => {
       <section className="flex items-center justify-center">
         <div className="mt-24">
           <h1 className="m-auto mb-3 text-6xl text-white text-center">TJIMO</h1>
-          <p className="text-center text-2xl text-white mb-6">October 19, 2024 @ TJHSST</p>
-          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://tjvmt.com/u/tjimo/registration24">2024 Registration</a></p>
-          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://tjvmt.com/u/tjimo/guide">TJIMO Guide</a></p>
+          <p className="text-center text-2xl text-white mb-6">October 18, 2025 @ TJHSST</p>
+          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://forms.gle/XX7hdFmDpZR2tAhSA">2025 Registration</a></p>
+          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://docs.google.com/document/d/14ZXXSCW4S3b5nwb5lwEDeXQJkChmxgde2PDFZUwC--Y/edit?usp=sharing">TJIMO Guide</a></p>
           <p className = "mt-6"></p>
         </div>
 
