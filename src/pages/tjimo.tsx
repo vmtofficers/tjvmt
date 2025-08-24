@@ -46,8 +46,8 @@ const TjimoPage: NextPage<any> = ({ user }) => {
         <div className="mt-24">
           <h1 className="m-auto mb-3 text-6xl text-white text-center">TJIMO</h1>
           <p className="text-center text-2xl text-white mb-6">October 18, 2025 @ TJHSST</p>
-          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://forms.gle/XX7hdFmDpZR2tAhSA">2025 Registration</a></p>
-          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://docs.google.com/document/d/14ZXXSCW4S3b5nwb5lwEDeXQJkChmxgde2PDFZUwC--Y/edit?usp=sharing">TJIMO Guide</a></p>
+          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://tjvmt.com/u/tjimo/registration25">2025 Registration</a></p>
+          <p className = "text-center mt-3"><a className = "text-2xl font-bold text-pink" href = "https://tjvmt.com/u/tjimo/guide">TJIMO Guide</a></p>
           <p className = "mt-6"></p>
         </div>
 
@@ -128,7 +128,7 @@ const TjimoPage: NextPage<any> = ({ user }) => {
           <span className="font-bold">Q</span>: Who can register?<br />
           <span className="font-bold">A</span>: ONE math teacher or math team coordinator from each school can register students from their school to participate in TJIMO.<br /><br />
           <span className="font-bold">Q</span>: How many students can attend from a school?<br />
-          <span className="font-bold">A</span>: Up to 6.<br /><br />
+          <span className="font-bold">A</span>: Up to <b>7</b>.<br /><br />
           <span className="font-bold">Q</span>: Can I register as an individual or homeschool student or with an organization outside of my school?<br />
           <span className="font-bold">A</span>: If you are homeschooled, you may register individually and indicate that you are homeschooled on the form. If you attend a public or private school, we ask that you ask your school’s math teacher/math team coordinator to register for you. We do not allow non-school organizations to participate. Please email us at vmtofficers@gmail.com if you have any questions.<br /><br />
           <span className="font-bold">Q</span>: What is the role of the teacher/coordinator?<br />
