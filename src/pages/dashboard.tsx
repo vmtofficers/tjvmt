@@ -8,6 +8,7 @@ import { ProblemSection } from '@/components/dashboard/problems';
 import { RankingsSection } from '@/components/dashboard/rankings';
 import { GraderSection } from '@/components/dashboard/grader';
 import { PollSection } from '@/components/dashboard/polls';
+import { NumberingSection } from '@/components/dashboard/numbering';
 import { handleInputChange } from '@/lib/handleInputChange';
 import { Spinner } from '@/components/Spinner';
 import { TabSelect } from '@/components/TabSelect';
@@ -23,10 +24,11 @@ const Dashboard: NextPage<any> = ({ }) => {
   let { user } = useSession()
   const [input, setInput] = useState({ tab: 'polls' })
   const tabs = [
-    { label: 'Polls', value: 'polls' },
+    { label: 'Attendance', value: 'polls' },
     { label: 'Problems', value: 'problems'},
     { label: 'Rankings', value: 'rankings' },
-    { label: 'Directory', value: 'directory' },
+    { label: 'Numbering', value: 'numbering' },
+    //{ label: 'Directory', value: 'directory' },
     user.admin ? {label: 'Grader', value: 'grader'} : null
   ].filter(v => v)
 
@@ -34,7 +36,8 @@ const Dashboard: NextPage<any> = ({ }) => {
     'polls': <PollSection />,
     'problems': <ProblemSection/>,
     'rankings': <RankingsSection/>,
-    'directory': <Directory/>,
+    'numbering': <NumberingSection/>,
+    //'directory': <Directory/>,
     'grader': <GraderSection/>
   }
 
