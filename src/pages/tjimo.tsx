@@ -194,12 +194,10 @@ const TjimoPage: NextPage<any> = ({ user }) => {
         <div className="mt-6 w-full flex flex-wrap justify-center items-start">
           <PrizeSponsor
             // text="The Daily Challenge is the first and only online math course that captivates. It was invented by world famous math professor Po-Shen Loh. Lessons are taught live by instructors who are not only brilliant at math, but also skilled in improvisational comedy and performance."
-            img="/images/sponsors/daily_challenge.png"
             company="The Daily Challenge"
             link="https://daily.poshenloh.com/"
           />
           <PrizeSponsor
-            img="/images/sponsors/aops.png"
             company="AoPS"
             link="https://artofproblemsolving.com"
           />
