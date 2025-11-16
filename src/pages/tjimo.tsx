@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Carousel, { CarouselItem } from "@/components/Carousel";
 import { authorize } from '@/lib/api/authorize';
-import {Sponsor, SmallerSponsor} from '@/pages/sponsors';
+import {Sponsor, SmallerSponsor, SmallerUnlinkSponsor} from '@/pages/sponsors';
 
 export const getServerSideProps = async ({ req, res }) => {
   const { user } = await authorize(req, res)
@@ -188,7 +188,7 @@ const TjimoPage: NextPage<any> = ({ user }) => {
         <h2 className="mt-8 text-3xl font-bold text-[#916b1a] text-center">TJIMO Bronze Sponsors</h2>
         <div className="mt-6 w-full flex flex-wrap justify-center items-start">
           
-          <SmallerSponsor
+          <SmallerUnlinkSponsor
             // text="Jane Street is a quantitative trading firm with offices worldwide. We hire smart, humble people who love to solve problems, build systems, and test theories. Our success is driven by our people and we never stop improving."
             img="/images/sponsors/oneria.png"
             company="Oneria"

@@ -53,6 +53,23 @@ export const SmallerSponsor = ({ img, company, link }) => {
   );
 };
 
+export const SmallerUnlinkSponsor = ({ img, company }) => {
+  return (
+    <div
+      className={`m-4 p-4 sm:w-6/8 lg:w-2/5 bg-navy-light bg-opacity-80 rounded-md "opacity-100 translate-x-0" : "-translate-x-12 opacity-0"
+      } flex transition-all duration-300`}
+    >
+      <div className="w-full text-center items-center">
+        <img
+          src={img}
+          alt={company}
+          className="max-h-40 mx-auto my-2"
+        />
+      </div>
+    </div>
+  );
+};
+
 const SponsorSection = () => {
   return (
     <section className="pt-24 md:max-w-2/3 xl:max-w-1/2 text-white bg-navy bg-opacity-50">
