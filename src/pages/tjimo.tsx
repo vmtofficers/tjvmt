@@ -168,6 +168,12 @@ const TjimoPage: NextPage<any> = ({ user }) => {
             company="RSM"
             link="https://www.russianschool.com/"
           />
+          <Sponsor
+          text="We are the Vienna branch of Art of Problem Solving.  We offer afterschool and weekend math and language arts classes for advanced students who need more stimulating material than what they receive at school. Almost all of TJ's VMT are current or former AoPS students!"
+          img="/images/sponsors/vienna.png"
+          company="AoPS Vienna"
+          link="https://vienna.aopsacademy.org/"
+        />
         </div> 
         <h2 className="mt-8 text-3xl text-neutral-300 font-bold text-center">TJIMO Silver Sponsors</h2>
         <div className="mt-6 w-full flex flex-wrap justify-center items-start">
@@ -186,7 +192,7 @@ const TjimoPage: NextPage<any> = ({ user }) => {
             // text="Jane Street is a quantitative trading firm with offices worldwide. We hire smart, humble people who love to solve problems, build systems, and test theories. Our success is driven by our people and we never stop improving."
             img="/images/sponsors/oneria.png"
             company="Oneria"
-            link="https://oneria.org"
+            //link="https://oneria.org"
           />
         </div>
         

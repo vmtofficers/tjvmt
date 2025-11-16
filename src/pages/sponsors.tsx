@@ -80,6 +80,13 @@ const SponsorSection = () => {
           company="Hudson River Trading"
           link="https://www.hudsonrivertrading.com/"
         />
+        <Sponsor
+          text="Susquehanna is a global quantitative trading firm founded by a group of friends who share a passion for game theory and probabilistic thinking. Our rigorous and analytical approach to decision making has led Susquehanna to become one of the largest and most successful proprietary trading firms in the world. Our employees are relentless problem solvers who collaborate to make optimal decisions."
+          img="/images/sponsors/susquehanna.png"
+          company="Susquehanna"
+          link="https://sig.com/"
+        />
+
       </div> {/*}
       <h2 className="mt-8 text-3xl text-neutral-300 font-bold text-center">Silver Sponsors</h2>
       <div className="mt-6 w-full flex flex-wrap justify-center items-start">
