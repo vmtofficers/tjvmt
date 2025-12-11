@@ -113,6 +113,18 @@ export const getServerSideProps = async ({ req, res }) => {
             "Avni Garg: Honorable Mention",
           ],
         },
+        {
+          picture: `/images/awards/MMaths25.jpg`,
+          name: "MMaths 2025",
+          team: ["VAMC: 2nd Overall, The Snorlaxes: 3rd Overall"],
+          indiv: ["Shunyao Yan: 2nd Place"],
+        },
+        {
+          picture: `/images/awards/Duke25.jpg`,
+          name: "Duke 2025",
+          team: ["TJ A: 3rd Overall, 1st in Guts"],
+          indiv: ["Calvin Wang: 1st Place"],
+        },
       ],
     },
   };

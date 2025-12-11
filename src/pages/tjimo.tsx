@@ -5,6 +5,7 @@ import Link from "next/link"
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import Carousel, { CarouselItem } from "@/components/Carousel";
 import { authorize } from '@/lib/api/authorize';
+import {Sponsor, SmallerSponsor, SmallerUnlinkSponsor} from '@/pages/sponsors';
 
 export const getServerSideProps = async ({ req, res }) => {
   const { user } = await authorize(req, res)
@@ -35,6 +36,21 @@ const Slide = ({ number }) => (
     <img src={`${images[number-1]}`} />
   </div>
 );
+
+const PrizeSponsor = ({ company, link }) => {
+  return (
+    <div
+      className={`m-4 p-4 sm:w-6/8 lg:w-2/5 bg-navy-light bg-opacity-80 rounded-md "opacity-100 translate-x-0" : "-translate-x-12 opacity-0"
+      } flex transition-all duration-300`}
+    >
+      <div className="w-full text-center items-center">
+        <a href={link} target="_blank">
+          <h2 className="text-2xl font-bold text-white underline">{company}</h2>
+        </a>
+      </div>
+    </div>
+  );
+};
 
 const TjimoPage: NextPage<any> = ({ user }) => {
   return (
@@ -138,6 +154,66 @@ const TjimoPage: NextPage<any> = ({ user }) => {
           <span className="font-bold">Q</span>: What will students need for the competition? <br />
           <span className="font-bold">A</span>: Pencils, paper, a calculator, and a <strong>willingness to learn!</strong>
         </p>
+      </section>
+      <section className="pt-24 md:max-w-2/3 xl:max-w-1/2 text-white bg-navy bg-opacity-50">
+        <h1 className="text-5xl text-white text-center">TJIMO Sponsors</h1>
+        <p className="relative w-11/12 lg:w-9/12 my-8 mx-auto text-center text-white text-lg lg:text-2xl font-light">
+          We would like to thank our TJIMO sponsors for their generous support!
+        </p>
+        <h2 className="mt-12 text-3xl font-bold text-yellow-500 text-center">TJIMO Gold Sponsors</h2>
+        <div className="mt-6 w-full flex flex-wrap justify-center items-start">
+          <Sponsor
+            text="The Russian School of Mathematics (RSM) is an award winning K-12 after-school math program that has empowered students to achieve excellence for over twenty years."
+            img="/images/sponsors/RSM.png"
+            company="RSM"
+            link="https://www.russianschool.com/"
+          />
+          <Sponsor
+          text="We are the Vienna branch of Art of Problem Solving.  We offer afterschool and weekend math and language arts classes for advanced students who need more stimulating material than what they receive at school. Almost all of TJ's VMT are current or former AoPS students!"
+          img="/images/sponsors/vienna.png"
+          company="AoPS Vienna"
+          link="https://vienna.aopsacademy.org/"
+        />
+        </div> 
+        <h2 className="mt-8 text-3xl text-neutral-300 font-bold text-center">TJIMO Silver Sponsors</h2>
+        <div className="mt-6 w-full flex flex-wrap justify-center items-start">
+          <Sponsor
+            text="We offer quality math enrichment for gifted upper elementary and middle school students in the metropolitan Washington DC area. We’re here to help students appreciate the beauty and power of serious and challenging mathematics through our summer camps and small group enrichment sessions."
+            img="/images/sponsors/math_reasoning.png"
+            company="Math Reasoning"
+            link="https://mathreasoning.com/"
+          />
+        </div>
+
+        <h2 className="mt-8 text-3xl font-bold text-[#916b1a] text-center">TJIMO Bronze Sponsors</h2>
+        <div className="mt-6 w-full flex flex-wrap justify-center items-start">
+          
+          <SmallerUnlinkSponsor
+            // text="Jane Street is a quantitative trading firm with offices worldwide. We hire smart, humble people who love to solve problems, build systems, and test theories. Our success is driven by our people and we never stop improving."
+            img="/images/sponsors/oneria.png"
+            company="Oneria"
+            //link="https://oneria.org"
+          />
+        </div>
+        
+        <h2 className="mt-8 text-3xl font-bold text-[#3896e8] text-center">TJIMO Prize Sponsors</h2>
+        <div className="mt-6 w-full flex flex-wrap justify-center items-start">
+          <PrizeSponsor
+            // text="The Daily Challenge is the first and only online math course that captivates. It was invented by world famous math professor Po-Shen Loh. Lessons are taught live by instructors who are not only brilliant at math, but also skilled in improvisational comedy and performance."
+            company="The Daily Challenge"
+            link="https://daily.poshenloh.com/"
+          />
+          <PrizeSponsor
+            company="AoPS"
+            link="https://artofproblemsolving.com"
+          />
+        </div>
+        
+        <section className="relative w-11/12 lg:w-9/12 my-8 mx-auto text-center text-2xl text-white mb-6 font-light">
+          <p> Interested in sponsoring with us for TJIMO or supporting us in our many travel competitions? </p>
+          <p> Check out our <a className="font-bold text-pink" target="_blank" href="https://tjvmt.com/u/sponsorship">sponsorship packet</a> for more information! </p>
+          <p> You can also get in touch with us anytime at <a className="font-bold text-pink" href="mailto:vmtofficers@gmail.com">vmtofficers@gmail.com</a>.</p>
+        </section>
       </section>
     </Layout>
   )

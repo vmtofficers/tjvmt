@@ -155,12 +155,12 @@ const Resources: NextPage<any> = ({ user }) => {
             <div className='m-8 items-center justify-center'>
               <h1 className='text-white text-center text-3xl font-bold mb-4'>Internal Resources (Do Not Share)</h1>
               {/* <InternalResource link="https://docs.google.com/document/d/1y5xmvv1OFQOh21uZ-EA5KX4Od82mfpp0gqyD8J0nCts/edit?usp=sharing" name="AMCs Guide (Isabella Zhu '23)" /> */}
-              <InternalResource link="https://tjvmt.com/u/pizza" name="ARML Pizza" />
+              {/* <InternalResource link="https://tjvmt.com/u/pizza" name="ARML Pizza" /> */}
               {/* <InternalResource link="/arml" name="ARML Information" newTab={false} /> */}
-              <InternalResource link="https://tjvmt.com/u/compguide" name="2024-25 Competitions Guide" />
+              <InternalResource link="https://tjvmt.com/u/compguide" name="Competitions Guide" />
               <InternalResource link="https://tjvmt.com/u/opportunities" name="Summer Programs and Opportunities Guide" />
               <InternalResource link="https://tjvmt.com/u/thursday_practice" name="Thursday Practice Schedule" />
-              <InternalResource link="https://tjvmt.com/u/information" name="Orientation Packet 2024-25" />
+              <InternalResource link="https://tjvmt.com/u/information" name="Orientation Packet" />
               <InternalResource link="https://tjvmt.com/u/discord_" name="Discord" />
             </div>
           </section>
