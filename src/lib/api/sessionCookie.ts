@@ -66,3 +66,13 @@ export const setSessionCookie = (res: NextApiResponse, payload: SessionPayload) 
     maxAge: SESSION_COOKIE_MAX_AGE
   })
 }
+
+export const clearSessionCookie = (res: NextApiResponse) => {
+  setCookie(res, SESSION_COOKIE_NAME, '', {
+    secure: true,
+    httpOnly: true,
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 0
+  })
+}
