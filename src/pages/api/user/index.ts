@@ -1,9 +1,16 @@
 import { authorize } from '@/lib/api/authorize';
+import { setSessionCookie } from '@/lib/api/sessionCookie';
 import { db } from '@/lib/db/db';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const { authorized, profileBody, user } = await authorize(req, res)
+  const requireProfile = req.method === 'POST'
+  const { authorized, profileBody, user } = await authorize(
+    req,
+    res,
+    false,
+    { requireProfile }
+  )
   if (!authorized) return res.status(401).send(null)
 
   try {
@@ -50,6 +57,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
           profilePicUrl: profilePicUrl,
           profilePicData: picData
         }
+      })
+
+      setSessionCookie(res, {
+        userId: user.id,
+        ionId: String(profileBody.id),
+        admin: user.admin,
+        issuedAt: Date.now()
       })
 
       return res.status(200).json({
