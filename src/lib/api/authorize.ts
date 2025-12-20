@@ -1,8 +1,20 @@
-import { PrismaClient } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 import {db} from '@/lib/db/db'
+import { readSessionCookie } from '@/lib/api/sessionCookie'
 
-export const authorize = async (req: NextApiRequest, res: NextApiResponse, admin=false) => {
+const parseJsonResponse = async (response: Response) => {
+  if (!response.ok) return null
+  const contentType = response.headers.get('content-type') || ''
+  if (!contentType.includes('application/json')) return null
+  return response.json()
+}
+
+export const authorize = async (
+  req: NextApiRequest,
+  res: NextApiResponse,
+  admin=false,
+  options: { requireProfile?: boolean } = {}
+) => {
   let authorization = null
   if(!authorization) authorization = req.headers.authorization
   if(!authorization && req.cookies.auth) {
@@ -10,16 +22,48 @@ export const authorize = async (req: NextApiRequest, res: NextApiResponse, admin
     if(auth) authorization = `Bearer ${auth.access_token}`
   }
   req.headers.authorization = authorization
+
+  const session = readSessionCookie(req)
+  if (session) {
+    const user = await db.user.findFirst({
+      where: {
+        id: session.userId
+      }
+    })
+    const authorized = Boolean(user && (!admin || user.admin))
+    if (user && admin && !user.admin) {
+      return {
+        authorized: false,
+        user,
+        profileBody: null
+      }
+    }
+    if (authorized && !options.requireProfile) {
+      return {
+        authorized,
+        user,
+        profileBody: null
+      }
+    }
+  }
+
+  if (!authorization) {
+    return {
+      authorized: false,
+      user: null,
+      profileBody: null
+    }
+  }
   
   const profileRes = await fetch('https://ion.tjhsst.edu/api/profile', {headers: {
     'Authorization': authorization
   }})
-  let profileBody = await profileRes.json()
-  let authorized = Boolean(profileBody.id)
+  const profileBody = await parseJsonResponse(profileRes)
+  let authorized = Boolean(profileBody?.id)
   
   let user = await db.user.findFirst({
     where: {
-      ionId: String(profileBody.id)
+      ionId: String(profileBody?.id)
     }
   })
   
