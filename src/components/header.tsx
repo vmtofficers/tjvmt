@@ -58,7 +58,8 @@ const NavBar = (user) => {
     return () => window.removeEventListener('scroll', atTopCallback)
   })
 
-  const logOut = () => {
+  const logOut = async () => {
+    await fetch('/api/auth/logout', { method: 'POST' })
     setSession(null);
     router.reload();
   }
