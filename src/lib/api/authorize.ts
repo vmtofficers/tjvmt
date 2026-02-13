@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import {db} from '@/lib/db/db'
-import { readSessionCookie } from '@/lib/api/sessionCookie'
+import { clearSessionCookie, readSessionCookie, setSessionCookie } from '@/lib/api/sessionCookie'
 
 const parseJsonResponse = async (response: Response) => {
   if (!response.ok) return null
@@ -18,8 +18,12 @@ export const authorize = async (
   let authorization = null
   if(!authorization) authorization = req.headers.authorization
   if(!authorization && req.cookies.auth) {
-    const auth = JSON.parse(req.cookies.auth)
-    if(auth) authorization = `Bearer ${auth.access_token}`
+    try {
+      const auth = JSON.parse(req.cookies.auth)
+      if(auth?.access_token) authorization = `Bearer ${auth.access_token}`
+    } catch {
+      authorization = null
+    }
   }
   req.headers.authorization = authorization
 
@@ -30,15 +34,19 @@ export const authorize = async (
         id: session.userId
       }
     })
+    const sessionMatchesUser = Boolean(user && user.ionId === session.ionId)
+    if (!sessionMatchesUser) {
+      clearSessionCookie(res)
+    }
     const authorized = Boolean(user && (!admin || user.admin))
-    if (user && admin && !user.admin) {
+    if (sessionMatchesUser && user && admin && !user.admin) {
       return {
         authorized: false,
         user,
         profileBody: null
       }
     }
-    if (authorized && !options.requireProfile) {
+    if (sessionMatchesUser && authorized && !options.requireProfile) {
       return {
         authorized,
         user,
@@ -68,6 +76,15 @@ export const authorize = async (
   })
   
   if(admin && authorized && !user.admin) authorized = false;
+
+  if (authorized && user) {
+    setSessionCookie(res, {
+      userId: user.id,
+      ionId: user.ionId,
+      admin: user.admin,
+      issuedAt: Date.now()
+    })
+  }
   
   return {
     authorized,
