@@ -253,6 +253,7 @@ const AwardsSection = ({
   title = "Awards",
   awards,
 }: {
+  title?: string;
   awards: { picture: string; name: string; team: string[]; indiv: string[] }[];
 }) => {
   const [openAward, setOpenAward] = useState<string | null>(null);
