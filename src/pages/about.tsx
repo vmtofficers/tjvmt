@@ -60,7 +60,7 @@ export const getServerSideProps = async ({ req, res }) => {
         },
       ],
 
-      awards: [
+      past_awards: [
         {
           picture: `/images/awards/duke24_all.jpg`,
           name: "Duke 2024",
@@ -113,6 +113,9 @@ export const getServerSideProps = async ({ req, res }) => {
             "Avni Garg: Honorable Mention",
           ],
         },
+      ],
+
+      awards: [
         {
           picture: `/images/awards/MMaths25.jpg`,
           name: "MMaths 2025",
@@ -124,6 +127,34 @@ export const getServerSideProps = async ({ req, res }) => {
           name: "Duke 2025",
           team: ["TJ A: 3rd Overall, 1st in Guts"],
           indiv: ["Calvin Wang: 1st Place"],
+        },
+        {
+          picture: `/images/awards/pumac25.jpeg`,
+          name: "PUMaC 2025",
+          team: ["TJ A: 7th Overall, 7th in Team"],
+          indiv: ["Calvin Wang: 5th Overall, 3rd in Algebra",
+            "Anderson Hao: 7th in Geometry"
+          ],
+        },
+        {
+          picture: `/images/awards/hmmt26.JPG`,
+          name: "HMMT February 2026",
+          team: ["TJ A: 6th Overall, 4th in Guts, 8th in Team"],
+          indiv: ["Calvin Wang: 10th Overall, 7th in Combinatorics"],
+        },
+        {
+          picture: `/images/awards/cmimc26.JPG`,
+          name: "CMIMC 2026",
+          team: ["TJ A: 5th Overall, 2nd in Team",
+            "TJ H: 7th in TCS"
+          ],
+          indiv: ["Patrick Du: 5th in Combinatorics"],
+        },
+        {
+          picture: `/images/arml26.jpeg`,
+          name: "ARML 2026",
+          team: ["TJ A: 16th Overall"],
+          indiv: ["Patrick Du: 9th Overall"],
         },
       ],
     },
@@ -149,7 +180,7 @@ const AboutUsSection = () => {
         competition for middle schoolers.
       </p>
       <div className="mx-auto relative w-11/12 lg:w-9/12 aspect-[4/3]">
-        <Image src="/images/arml25.jpg" alt="ARML Picture" layout="fill" />
+        <Image src="/images/arml26.jpeg" alt="ARML Picture" layout="fill" />
       </div>
     </div>
   );
@@ -219,6 +250,7 @@ const LeadershipSection = ({
 };
 
 const AwardsSection = ({
+  title = "Awards",
   awards,
 }: {
   awards: { picture: string; name: string; team: string[]; indiv: string[] }[];
@@ -234,7 +266,7 @@ const AwardsSection = ({
     >
       <div>
         <h2 className="mb-4 text-center text-white text-5xl w-screen">
-          Awards
+          {title}
         </h2>
         <p className="text-center">
           <small className="mb-6 text-white text-base gradient-text text-center">
@@ -305,12 +337,13 @@ const AwardsSection = ({
   );
 };
 
-const Home: NextPage<any> = ({ officers, awards, user }) => {
+const Home: NextPage<any> = ({ officers, awards, past_awards, user }) => {
   return (
     <Layout user={user}>
       <AboutUsSection />
       <LeadershipSection officers={officers} />
-      <AwardsSection awards={awards} />
+      <AwardsSection title="Awards 2025-2026" awards={awards} />
+      <AwardsSection title="Past Awards" awards={past_awards} />
       {/* <SponsorSection/> */}
     </Layout>
   );

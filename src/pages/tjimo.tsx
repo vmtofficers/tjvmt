@@ -28,7 +28,8 @@ const images = [
   "/images/tjimo/img6.jpg",
   "/images/tjimo/img7.jpg",
   "/images/tjimo/img8.jpg",
-  "/images/tjimo/img9.jpg"
+  "/images/tjimo/img9.jpg",
+  "/images/tjimo/img10.jpg"
 ];
 
 const Slide = ({ number }) => (
